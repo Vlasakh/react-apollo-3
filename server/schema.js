@@ -19,9 +19,11 @@ const schema = buildSchema(`
   
   input UserInput {
     id: ID
-    username: String!
-    age: Int!
-    posts: [PostInput]
+    name: String
+    username: String
+    email: String
+    address: String
+    company: String
   }
   input PostInput {
     id: ID
@@ -30,11 +32,14 @@ const schema = buildSchema(`
   }
   
   type Query {
+    getSuggestionUsers: [User]
     getAllUsers: [User]
     getUser(id: ID): User
   }  
   type Mutation {
+    initDb(limit: Int): [User]
     createUser(input: UserInput): User
+    updateUser(input: UserInput): User
   }
 `);
 

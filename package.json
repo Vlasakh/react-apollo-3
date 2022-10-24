@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "dev:client": "cd ./client/apollo3-client ; npm run start",
     "dev:server": "cd ./server ; npm run dev"
   },
   "repository": {
