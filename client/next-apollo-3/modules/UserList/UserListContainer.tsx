@@ -1,17 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import TextField from '@mui/material/TextField';
-import { CREATE_USER } from '../query/createUser';
-import { INIT_DB } from '../query/initDb';
-import { GET_ALL_USERS } from '../query/users';
+import { INIT_DB } from '../../query/initDb';
+import { GET_ALL_USERS } from '../../query/users';
 import { AddUser } from './AddUser';
 import { UserList } from './UserList';
 

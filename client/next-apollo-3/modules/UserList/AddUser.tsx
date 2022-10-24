@@ -7,14 +7,14 @@ import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { SEVERITY } from '../Alerts/AlertContext';
-import { useAlertContext } from '../Alerts/AlertContext';
-import { useMultyState } from '../hooks/useMultyState';
-import { CREATE_USER } from '../query/createUser';
-import { INIT_DB } from '../query/initDb';
-import { UPDATE_USER } from '../query/updateUser';
-import { GET_ALL_USERS } from '../query/users';
-import { randomInteger } from '../utils/randomInteger';
+import { SEVERITY } from '../../Alerts/AlertContext';
+import { useAlertContext } from '../../Alerts/AlertContext';
+import { useMultyState } from '../../hooks/useMultyState';
+import { CREATE_USER } from '../../query/createUser';
+import { INIT_DB } from '../../query/initDb';
+import { UPDATE_USER } from '../../query/updateUser';
+import { GET_ALL_USERS } from '../../query/users';
+import { randomInteger } from '../../utils/randomInteger';
 import { UserSuggestion } from './UserSuggestion';
 
 enum Fields {
