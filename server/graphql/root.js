@@ -39,7 +39,6 @@ export const root = {
     }
   },
   getAllUsers: () => {
-    console.log('❗usersTable', usersTable);
     return usersTable;
   },
   getUser: ({ id }) => {
@@ -52,14 +51,12 @@ export const root = {
     return user;
   },
   updateUser: ({ input }) => {
-    console.log('❗input', input);
     const idx = usersTable.findIndex(({ id }) => id === input.id);
 
     if (idx !== -1) {
       const users = [...usersTable];
       users[idx] = input;
       setUsersTable(users);
-      console.log('❗[...usersTable]', users);
       return users[idx];
     } else {
       throw new Error("Didn't find then user");
