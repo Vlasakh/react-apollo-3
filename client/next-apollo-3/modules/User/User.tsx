@@ -36,7 +36,7 @@ export function User({ id }) {
       {loading ? (
         'loading...'
       ) : (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           {FIELDS_ORDER.map((field) => (
             <Box>
               <b>{field}</b>: {data?.values?.[field]}

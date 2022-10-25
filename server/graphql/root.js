@@ -42,7 +42,7 @@ export const root = {
     return usersTable;
   },
   getUser: ({ id }) => {
-    return usersTable.find((user) => user.id === id);
+    return usersTable.find((user) => user.id == id);
   },
 
   createUser: ({ input }) => {

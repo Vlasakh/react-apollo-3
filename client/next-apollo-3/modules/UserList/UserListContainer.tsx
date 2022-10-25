@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import Box from '@mui/material/Box';
+import { useRouter } from 'next/router';
+import { useRouteService } from '../../common/services/RouteService';
 import { GET_ALL_USERS } from '../../query/getAllUsers';
 import { INIT_DB } from '../../query/initDb';
 import { AddUser } from './AddUser';
@@ -13,8 +14,13 @@ export function UserListContainer() {
   const [initDb] = useMutation(INIT_DB, {
     onCompleted: () => usersQuery.refetch(),
   });
+  const appRoutes = useRouteService();
+  const router = useRouter();
 
-  const handleSetEditUser = (user) => () => setUser(user);
+  const handleSetEditUser = (user) => setUser(user);
+  const handleRowClick = ({ id }) => {
+    router.push({ pathname: appRoutes.getUserPath(), query: { id } });
+  };
 
   const handleInitDb = (limit: number) =>
     initDb({
@@ -27,7 +33,13 @@ export function UserListContainer() {
 
   return (
     <>
-      <UserListBlock users={users} loading={usersQuery.loading} onInitDb={handleInitDb} setEditUser={handleSetEditUser} />
+      <UserListBlock
+        users={users}
+        loading={usersQuery.loading}
+        onInitDb={handleInitDb}
+        setEditUser={handleSetEditUser}
+        onRowClick={handleRowClick}
+      />
       <AddUser user={user} />
     </>
   );
