@@ -11,24 +11,23 @@ import { SEVERITY } from '../../Alerts/AlertContext';
 import { useAlertContext } from '../../Alerts/AlertContext';
 import { useMultyState } from '../../hooks/useMultyState';
 import { CREATE_USER } from '../../query/createUser';
+import { GET_ALL_USERS } from '../../query/getAllUsers';
 import { INIT_DB } from '../../query/initDb';
 import { UPDATE_USER } from '../../query/updateUser';
-import { GET_ALL_USERS } from '../../query/users';
+import { UserFields } from '../../types/User';
 import { randomInteger } from '../../utils/randomInteger';
 import { UserSuggestion } from './UserSuggestion';
 
-enum Fields {
-  id = 'id',
-  name = 'name',
-  username = 'username',
-  email = 'email',
-  address = 'address',
-  company = 'company',
-}
-const FIELDS_ORDER: Fields[] = [Fields.name, Fields.username, Fields.email, Fields.address, Fields.company];
+const FIELDS_ORDER: UserFields[] = [
+  UserFields.name,
+  UserFields.username,
+  UserFields.email,
+  UserFields.address,
+  UserFields.company,
+];
 
 export function AddUser({ user }) {
-  const [formData, setFormData] = useMultyState<Record<Fields, String>>({});
+  const [formData, setFormData] = useMultyState<Record<UserFields, String>>({});
   const [createUser] = useMutation(CREATE_USER);
   const [updateUser] = useMutation(UPDATE_USER);
   // const [fetchUsers] = useLazyQuery(GET_ALL_USERS, {});
@@ -40,12 +39,12 @@ export function AddUser({ user }) {
 
   const handleSetFields = ({ id, name, username, email, address, company }) => {
     setFormData({
-      [Fields.id]: id,
-      [Fields.name]: name,
-      [Fields.username]: username,
-      [Fields.email]: email,
-      [Fields.address]: address,
-      [Fields.company]: company,
+      [UserFields.id]: id,
+      [UserFields.name]: name,
+      [UserFields.username]: username,
+      [UserFields.email]: email,
+      [UserFields.address]: address,
+      [UserFields.company]: company,
     });
   };
   const handleSubmit = () => {
@@ -76,7 +75,8 @@ export function AddUser({ user }) {
           </Typography>
           {FIELDS_ORDER.map((field) => (
             <TextField
-              label={Fields[field]}
+              key={field}
+              label={UserFields[field]}
               variant="outlined"
               margin={'dense'}
               size={'small'}

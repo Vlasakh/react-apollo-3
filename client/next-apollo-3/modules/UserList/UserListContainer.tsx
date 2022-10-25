@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import Box from '@mui/material/Box';
+import { GET_ALL_USERS } from '../../query/getAllUsers';
 import { INIT_DB } from '../../query/initDb';
-import { GET_ALL_USERS } from '../../query/users';
 import { AddUser } from './AddUser';
-import { UserList } from './UserList';
+import { UserListBlock } from './UserListBlock';
 
 export function UserListContainer() {
   const [users, setUsers] = useState([]);
@@ -26,9 +26,9 @@ export function UserListContainer() {
   }, [usersQuery.data]);
 
   return (
-    <Box sx={{ margin: 1 }}>
-      <UserList users={users} loading={usersQuery.loading} onInitDb={handleInitDb} setEditUser={handleSetEditUser} />
+    <>
+      <UserListBlock users={users} loading={usersQuery.loading} onInitDb={handleInitDb} setEditUser={handleSetEditUser} />
       <AddUser user={user} />
-    </Box>
+    </>
   );
 }

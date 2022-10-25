@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import ArrowForward from '@mui/icons-material/ArrowForward';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
@@ -7,9 +9,16 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
+import { styled } from '@mui/material/styles';
+import Link from 'next/link';
+import { useRouteService } from '../../common/services/RouteService';
+import { SquareButton } from './SquareButton';
 
-export function UserList({ users, loading, onInitDb, setEditUser }) {
+const BoxContorls = styled(Box)({ display: 'flex', '& button': { marginRight: '5px' } });
+
+export function UserListBlock({ users, loading, onInitDb, setEditUser }) {
   const [limit, setLimit] = useState(3);
+  const appRoutes = useRouteService();
 
   return (
     <div>
@@ -43,13 +52,16 @@ export function UserList({ users, loading, onInitDb, setEditUser }) {
                     <TableCell>{address}</TableCell>
                     <TableCell>{company}</TableCell>
                     <TableCell>
-                      <Button
-                        variant={'outlined'}
-                        sx={{ paddingLeft: 0, paddingRight: 0, minWidth: 36 }}
-                        onClick={setEditUser(user)}
-                      >
-                        E
-                      </Button>
+                      <BoxContorls>
+                        <SquareButton variant={'outlined'} onClick={setEditUser(user)}>
+                          E
+                        </SquareButton>
+                        <Link href={{ pathname: appRoutes.getUserPath(), query: { id } }}>
+                          <SquareButton variant={'outlined'}>
+                            <ArrowForward />
+                          </SquareButton>
+                        </Link>
+                      </BoxContorls>
                     </TableCell>
                   </TableRow>
                 );

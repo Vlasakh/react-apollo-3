@@ -9,8 +9,8 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
+import { GET_ALL_USERS } from '../../query/getAllUsers';
 import { GET_SUGGESTION_USERS } from '../../query/getSuggestionUsers';
-import { GET_ALL_USERS } from '../../query/users';
 import { randomInteger } from '../../utils/randomInteger';
 
 enum Fields {

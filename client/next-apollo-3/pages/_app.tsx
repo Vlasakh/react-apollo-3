@@ -1,4 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import Box from '@mui/material/Box';
 import type { AppProps } from 'next/app';
 import { AlertContextProvider } from '../Alerts/AlertContext';
 import { SnackbarAlert } from '../Alerts/SnackbarAlert';
@@ -11,7 +12,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ApolloProvider client={client}>
       <AlertContextProvider>
         <SnackbarAlert />
-        <Component {...pageProps} />
+        <Box sx={{ margin: 1 }}>
+          <Component {...pageProps} />
+        </Box>
       </AlertContextProvider>
     </ApolloProvider>
   );
