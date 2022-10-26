@@ -7,7 +7,7 @@ import { INIT_DB } from '../../query/initDb';
 import { AddUser } from './AddUser';
 import { UserListBlock } from './UserListBlock';
 
-export function UserListContainer() {
+export function UserCrudContainer() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
   const usersQuery = useQuery(GET_ALL_USERS);

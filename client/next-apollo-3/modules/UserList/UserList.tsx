@@ -11,7 +11,7 @@ import { SquareButton } from './SquareButton';
 const BoxContorls = styled(Box)({ display: 'flex', '& button': { marginRight: '5px' } });
 const TableRowUser = styled(TableRow)({ '&:hover td': { backgroundColor: '#1565c01c', cursor: 'pointer' } });
 
-export function UserList({ users, onRowClick = noop, controls = [] }) {
+export function UserList({ users = [], onRowClick = noop, controls = [] }) {
   return (
     <>
       <h1>Users</h1>

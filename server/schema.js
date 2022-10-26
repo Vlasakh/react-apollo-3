@@ -35,6 +35,8 @@ const schema = buildSchema(`
     getSuggestionUsers: [User]
     getAllUsers: [User]
     getUser(id: ID): User
+
+    getStaticUsers: [User]
   }  
   type Mutation {
     initDb(limit: Int): [User]

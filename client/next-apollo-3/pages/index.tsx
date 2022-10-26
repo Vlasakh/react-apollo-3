@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
-import { UserListContainer } from '../modules/UserList/UserListContainer';
+import { Home } from '../modules/Home/Home';
 
-const Home: NextPage = () => {
-  return <UserListContainer />;
+const HomePage: NextPage = () => {
+  return <Home />;
 };
 
-export default Home;
+export default HomePage;

@@ -3,6 +3,7 @@ import ArrowBack from '@mui/icons-material/ArrowBack';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useRouteService } from '../../common/services/RouteService';
 import { GET_USER } from '../../query/getUser';
 import { UserFields } from '../../types/User';
@@ -17,8 +18,10 @@ const FIELDS_ORDER: UserFields[] = [
 ];
 
 export function User({ id }) {
+  const router = useRouter();
   const appRoutes = useRouteService();
 
+  console.log('❗router', router);
   // const [users, setUsers] = useState([]);
   const { data, loading } = useQuery(GET_USER, { variables: { id } });
   data && console.log('❗userQuery', data);

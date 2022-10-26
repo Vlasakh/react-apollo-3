@@ -1,6 +1,17 @@
+export enum MenuType {
+  home = 'home',
+  userCrud = 'userCrud',
+  staticUsers = 'staticUsers',
+}
+type Routes = { menu: Record<MenuType, { getPath: () => string; title: string }> } | { [key: string]: () => string };
+
 const BASE_URL = '/api';
 
-const ROUTES = {
+const ROUTES: Routes = {
+  menu: {
+    userCrud: { getPath: () => '/users-crud', title: 'User CRUDs' },
+    staticUsers: { getPath: () => '/static-users', title: 'Static users' },
+  },
   getHomePath: () => '/',
   getUserPath: () => '/user/[id]',
 };

@@ -41,10 +41,6 @@ export const root = {
   getAllUsers: () => {
     return usersTable;
   },
-  getUser: ({ id }) => {
-    return usersTable.find((user) => user.id == id);
-  },
-
   createUser: ({ input }) => {
     let user = createUser(input);
     usersTable.push(user);
@@ -60,6 +56,19 @@ export const root = {
       return users[idx];
     } else {
       throw new Error("Didn't find then user");
+    }
+  },
+
+  getStaticUsers: async () => {
+    try {
+      let users = axios(`https://dummyjson.com/users?limit=10`);
+
+      users = await users;
+      users = users.data.users.map(remapUsersFromAPI);
+
+      return users;
+    } catch (e) {
+      console.error('❗e', e.message);
     }
   },
 };
