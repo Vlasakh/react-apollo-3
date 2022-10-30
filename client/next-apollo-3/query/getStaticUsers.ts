@@ -1,11 +1,13 @@
 import { gql } from '@apollo/client';
 import { USER_FRAGMENT } from './userFragment';
 
+export const defaultVariables = { skip: 10 };
+
 export const GET_STATIC_USERS = gql`
   ${USER_FRAGMENT}
 
-  query Users {
-    values: getStaticUsers {
+  query Users($skip: Int) {
+    values: getStaticUsers(skip: $skip) {
       ...userFragment
     }
   }

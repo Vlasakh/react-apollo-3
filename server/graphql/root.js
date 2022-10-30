@@ -59,9 +59,9 @@ export const root = {
     }
   },
 
-  getStaticUsers: async () => {
+  getStaticUsers: async ({ skip }) => {
     try {
-      let users = axios(`https://dummyjson.com/users?limit=10`);
+      let users = axios(`https://dummyjson.com/users?limit=10${skip ? `&skip=` + skip : ''}`);
 
       users = await users;
       users = users.data.users.map(remapUsersFromAPI);

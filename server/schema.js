@@ -36,7 +36,7 @@ const schema = buildSchema(`
     getAllUsers: [User]
     getUser(id: ID): User
 
-    getStaticUsers: [User]
+    getStaticUsers(skip: Int): [User]
   }  
   type Mutation {
     initDb(limit: Int): [User]

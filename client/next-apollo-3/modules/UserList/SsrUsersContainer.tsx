@@ -1,10 +1,10 @@
 import { useQuery } from '@apollo/client';
-import { GET_STATIC_USERS } from '../../query/getStaticUsers';
+import { GET_STATIC_USERS, defaultVariables } from '../../query/getStaticUsers';
 import { UserList } from './UserList';
 
-export function StaticUsersContainer() {
+export function SsrUsersContainer() {
   // const [users, setUsers] = useState([]);
-  const usersQuery = useQuery(GET_STATIC_USERS);
+  const usersQuery = useQuery(GET_STATIC_USERS, { variables: defaultVariables });
 
   return (
     <>

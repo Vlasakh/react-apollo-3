@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Link from 'next/link';
 import { MenuType, useRouteService } from '../../common/services/RouteService';
 
-const MENU = [MenuType.userCrud, MenuType.staticUsers];
+const MENU = [MenuType.userCrud, MenuType.ssrUsers, MenuType.staticUsers];
 
 export function Home() {
   const routes = useRouteService();
