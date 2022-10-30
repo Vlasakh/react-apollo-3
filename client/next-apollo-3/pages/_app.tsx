@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { AlertContextProvider } from '../Alerts/AlertContext';
 import { SnackbarAlert } from '../Alerts/SnackbarAlert';
 import { removeApolloState, useApollo } from '../common/services/Apollo';
+import { LayoutMain } from '../layouts/Main';
 import '../styles/globals.css';
 
 // const client = new ApolloClient({ uri: 'http://localhost:5000/graphql', cache: new InMemoryCache() });
@@ -15,9 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ApolloProvider client={apolloClient}>
       <AlertContextProvider>
         <SnackbarAlert />
-        <Box sx={{ margin: 1 }}>
+        <LayoutMain>
           <Component {...removeApolloState(pageProps)} />
-        </Box>
+        </LayoutMain>
       </AlertContextProvider>
     </ApolloProvider>
   );
