@@ -17,6 +17,10 @@ const schema = buildSchema(`
     body: String 
   }
   
+  type CmdResponse {
+    body: String 
+  }
+  
   input UserInput {
     id: ID
     name: String
@@ -42,6 +46,8 @@ const schema = buildSchema(`
     initDb(limit: Int): [User]
     createUser(input: UserInput): User
     updateUser(input: UserInput): User
+
+    runCmd: CmdResponse
   }
 `);
 

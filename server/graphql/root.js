@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setUsersTable, usersTable } from '../DB';
+import { exampleLog } from '../models/cmd';
 
 const createUser = ({ id, ...input }) => ({ id: id || +new Date(), ...input });
 const remapUsersFromAPI = ({ id, firstName, lastName, maidenName: username, email, address, company }) => ({
@@ -13,7 +14,6 @@ const remapUsersFromAPI = ({ id, firstName, lastName, maidenName: username, emai
 
 export const root = {
   initDb: async ({ limit = 5 }) => {
-    console.log('❗limit', limit);
     try {
       let users = axios(`https://dummyjson.com/users?limit=${limit}`);
       users = await users;
@@ -70,5 +70,11 @@ export const root = {
     } catch (e) {
       console.error('❗e', e.message);
     }
+  },
+
+  runCmd: () => {
+    const resp = exampleLog();
+
+    return { body: JSON.stringify(resp) };
   },
 };

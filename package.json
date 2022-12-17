@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev:client-cra": "cd ./client/apollo3-client ; npm run start",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "cd ./client/next-apollo-3 ; npm run dev",
     "dev:server": "cd ./server ; npm run dev"
   },
