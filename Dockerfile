@@ -1,6 +1,9 @@
 # node 16
 FROM node:16
 
+RUN apt-get update
+RUN apt-get -y install mc
+
 RUN mkdir -p /usr/src/app/
 WORKDIR /usr/src/app/
 

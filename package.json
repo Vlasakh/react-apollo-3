@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "cd ./client/next-apollo-3 ; npm run dev",
-    "dev:server": "cd ./server ; npm run dev"
+    "dev:server": "cd ./server ; npm run dev",
+    "utils:docker-build": "sh utils/docker-build.sh",
+    "utils:docker-run": "sh utils/docker-run.sh",
+    "utils:dock-comp-up": "sh utils/docker-compose.sh \"up\"",
+    "utils:dock-comp-down": "sh utils/docker-compose.sh \"down\""
   },
   "repository": {
     "type": "git",

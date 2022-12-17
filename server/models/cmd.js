@@ -1,6 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
+// const fs = require('fs');
+// const path = require('path');
+
 const OUTPUT_DIR = 'output';
 
 export function exampleLog() {
@@ -8,6 +11,7 @@ export function exampleLog() {
     a1: 11,
     b2: 21,
     c3: 31,
+    d4: 42,
   };
 
   console.log('❗path.resolve(__dirname, OUTPUT_DIR,)', path.resolve(__dirname, OUTPUT_DIR));
