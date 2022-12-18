@@ -3,7 +3,7 @@ version: '3'
 services:
   ra3:
 #    build: .
-    image: react-apollo-3
+    image: vlasakh/react-apollo-3
     ports:
     - 3033:3000
 #docker run --name ra3 \
