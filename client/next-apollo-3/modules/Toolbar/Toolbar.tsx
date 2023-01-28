@@ -1,3 +1,4 @@
+import IconPlus from '@mui/icons-material/AddOutlined';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -29,6 +30,9 @@ export function ToolbarModule() {
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Box sx={{ mr: 2 }}>
               <ApolloIcon height={30} />
+            </Box>{' '}
+            <Box sx={{ mr: 2 }}>
+              <IconPlus style={{ color: '#000' }} />
             </Box>
             <Box sx={{ mr: 2 }}>
               <img
