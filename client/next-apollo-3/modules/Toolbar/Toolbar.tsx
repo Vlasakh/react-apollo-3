@@ -28,13 +28,13 @@ export function ToolbarModule() {
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Box sx={{ mr: 2 }}>
+            <Box sx={{ mr: 1 }}>
               <ApolloIcon height={30} />
             </Box>{' '}
-            <Box sx={{ mr: 2 }}>
+            <Box sx={{ mr: 1 }}>
               <IconPlus style={{ color: '#000' }} />
             </Box>
-            <Box sx={{ mr: 2 }}>
+            <Box sx={{ mr: 1 }}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Next.js_Logotype_Light_Background.svg/1280px-Next.js_Logotype_Light_Background.svg.png"
                 style={{ height: 20 }}

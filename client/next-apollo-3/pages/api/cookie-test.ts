@@ -7,10 +7,9 @@ type Data = {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   // To Write a Cookie
-  res.writeHead(200, {
-    'Set-Cookie': `mycookie=test`,
-    'Content-Type': `text/plain`,
-  });
+  res.setHeader('Set-Cookie', `mycCookie=TEST TETS 3003; Path=/`);
+  // 'Set-Cookie': `mycookie=test`,
+  res.setHeader('Content-Type', `text/plain`);
 
-  res.json({ cookie: 'was set to /api/test' });
+  res.status(200).json({ cookie: 'was set to /api/test' });
 }

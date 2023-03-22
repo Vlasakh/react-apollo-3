@@ -16,11 +16,31 @@ export function RunCmd() {
   }, [data]);
 
   const handleSetCookie = async () => {
-    const res = await fetch('http://localhost:3000/api/test/cookie-test').then((res) => res.json());
+    // const res = await fetch('http://localhost:3000/api/test/cookie-test')
+    // const res = await fetch('http://kubernetes.docker.internal:5000/api/test/cookie-test')
+    // const res = await fetch('http://api.localhost:5000/cookie-test', {
+    const res = await fetch('http://sub-host.localhost:3000/api/cookie-test', {
+      credentials: 'include',
+    })
+      .then((res) => res.json())
+      .catch((e) => console.error('❗e', e));
     console.log('❗res', res);
   };
   const handleCheckCookie = async () => {
-    const res = await fetch('http://localhost:3000/api/cookie-test2').then((res) => res.json());
+    // const res = await fetch( 'http://localhost:3000/api/test/cookie-test2',
+    const res = await fetch(
+      'http://sub-host.localhost:3000/api/cookie-test2',
+      // 'http://api.localhost:5000/cookie-test2',
+      // 'http://kubernetes.docker.internal:5000/cookie-test2',
+      // const res = await fetch('http://kubernetes.docker.internal:5000/api/test/cookie-test2',
+      //
+      {
+        credentials: 'include',
+        // credentials: 'same-origin',
+      },
+    )
+      .then((res) => res.json())
+      .catch((e) => console.error('❗e', e));
     console.log('❗res', res);
   };
 

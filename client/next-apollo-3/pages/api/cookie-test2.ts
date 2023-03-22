@@ -6,6 +6,7 @@ type Data = {
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+  console.log('❗req.headers', req.headers);
   // To Write a Cookie
   // res.writeHead(200, {
   //   'Set-Cookie': `mycookie=test`,
