@@ -9,7 +9,8 @@
     "utils:docker-build": "sh utils/docker-build.sh",
     "utils:docker-run": "sh utils/docker-run.sh",
     "utils:dock-comp-up": "sh utils/docker-compose.sh \"up\"",
-    "utils:dock-comp-down": "sh utils/docker-compose.sh \"down\""
+    "utils:dock-comp-down": "sh utils/docker-compose.sh \"down\"",
+    "wdio": "cd ./e2e && npm run wdio"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,6 @@
     "url": "https://github.com/Vlasakh/react-apollo-3/issues"
   },
   "homepage": "https://github.com/Vlasakh/react-apollo-3#readme",
-  "dependencies": {},
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "concurrently": "^7.4.0",

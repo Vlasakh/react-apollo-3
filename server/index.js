@@ -4,8 +4,12 @@ const cors = require('cors');
 const schema = require('./schema');
 const { root } = require('./graphql/root');
 const { initDB } = require('./DB');
+const { routes } = require('./routes');
+
+const PORT = 5000;
 
 const app = express();
+
 app.use(cors());
 
 app.use(
@@ -17,8 +21,10 @@ app.use(
   }),
 );
 
-app.listen(5000, () => {
-  console.log('server started on port 5000, http://localhost:5000');
+app.use('/', routes);
+
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}, http://localhost:${PORT}`);
 
   initDB();
 });

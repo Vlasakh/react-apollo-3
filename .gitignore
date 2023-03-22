@@ -2,3 +2,4 @@
 /server/node_modules/
 /server/dist/
 /.idea/
+/e2e/node_modules/
