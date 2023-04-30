@@ -6,7 +6,7 @@
   "scripts": {
     "webpack": "webpack --watch",
     "dev1": "NODE_ENV=development nodemon dist/server.js",
-    "dev": "concurrently \"webpack --watch\" \"NODE_ENV=development nodemon dist/server.js\""
+    "dev": "concurrently \"webpack --watch\" \"env-cmd -f ../.env nodemon dist/server.js\""
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
-    "graphql": "^15.4.0"
+    "graphql": "^15.4.0",
+    "jsonwebtoken": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
