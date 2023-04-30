@@ -6,7 +6,7 @@ const { root } = require('./graphql/root');
 const { initDB } = require('./DB');
 const { routes } = require('./routes');
 
-const PORT = 5000;
+export const PORT = process.env.SERVER_PORT;
 
 const app = express();
 
