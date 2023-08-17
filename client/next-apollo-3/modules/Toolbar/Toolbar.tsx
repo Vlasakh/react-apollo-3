@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { ApolloIcon } from '../../assets/ApolloIcon';
 import { MenuType, useRouteService } from '../../common/services/RouteService';
 
-const MENU = [MenuType.userCrud, MenuType.ssrUsers, MenuType.staticUsers, MenuType.runCmd];
+const MENU = [MenuType.userCrud, MenuType.ssrUsers, MenuType.staticUsers, MenuType.runCmd, MenuType.useDeepEffect];
 
 export function ToolbarModule() {
   const routes = useRouteService();

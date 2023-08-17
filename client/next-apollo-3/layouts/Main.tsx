@@ -6,7 +6,7 @@ export function LayoutMain({ children }) {
   return (
     <>
       <ToolbarModule />
-      <Box sx={{ margin: 1 }}>{children}</Box>;
+      <Box sx={{ margin: 1 }}>{children}</Box>
     </>
   );
 }

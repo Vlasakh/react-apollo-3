@@ -1,13 +1,13 @@
+import { Routes } from '../../types/Routes';
+
 export enum MenuType {
   home = 'home',
   userCrud = 'userCrud',
   staticUsers = 'staticUsers',
   ssrUsers = 'ssrUsers',
   runCmd = 'runCmd',
+  useDeepEffect = 'useDeepEffect',
 }
-type Routes =
-  | { menu: Record<MenuType, { getPath: () => string; title: string; hint: string }> }
-  | { [key: string]: () => string };
 
 const BASE_URL = '/api';
 
@@ -17,6 +17,7 @@ const ROUTES: Routes = {
     staticUsers: { getPath: () => '/static-users', title: 'Static users' },
     ssrUsers: { getPath: () => '/ssr-users', title: 'Ssr users' },
     runCmd: { getPath: () => '/run-cmd', title: 'Run cmd', hint: 'Running server command' },
+    useDeepEffect: { getPath: () => '/use-deep-effect', title: 'use Deep Effect', hint: 'test useDeepEffect hook' },
   },
   getHomePath: () => '/',
   getUserPath: () => '/user/[id]',
