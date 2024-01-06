@@ -5,12 +5,17 @@ const schema = require('./schema');
 const { root } = require('./graphql/root');
 const { initDB } = require('./DB');
 const { routes } = require('./routes');
+const bodyParser = require('body-parser');
+
+// Middleware to parse JSON in the request body
 
 export const PORT = process.env.SERVER_PORT;
 
 const app = express();
 
 app.use(cors());
+
+app.use(bodyParser.json());
 
 app.use(
   '/graphql',

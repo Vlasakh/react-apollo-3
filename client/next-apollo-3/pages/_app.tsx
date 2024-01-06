@@ -1,5 +1,4 @@
 import { ApolloProvider } from '@apollo/client';
-import Box from '@mui/material/Box';
 import type { AppProps } from 'next/app';
 import { AlertContextProvider } from '../Alerts/AlertContext';
 import { SnackbarAlert } from '../Alerts/SnackbarAlert';

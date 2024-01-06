@@ -1,4 +1,8 @@
-export function ApolloIcon({ height }) {
+type Props = {
+  height: string | number;
+};
+
+export function ApolloIcon({ height }: Props) {
   return (
     <svg
       style={{ height }}

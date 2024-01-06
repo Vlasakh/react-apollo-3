@@ -10,7 +10,7 @@ routes.get('/api/test/cookie-test', cookieTest);
 routes.get('/cookie-test', cookieTest);
 routes.get('/cookie-test2', cookieTest2);
 
-routes.get('/feeds', customerInfo);
+routes.use('/feeds', customerInfo);
 
 routes.get('/api/token-generate', tokenGerate);
 // routes.get('/api/test/cookie-test', (req, res) => {

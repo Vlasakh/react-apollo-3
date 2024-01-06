@@ -1,8 +1,12 @@
-import { useQuery } from '@apollo/client';
+import { ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import { ToolbarModule } from '../modules/Toolbar/Toolbar';
 
-export function LayoutMain({ children }) {
+type Props = {
+  children: ReactNode;
+};
+
+export function LayoutMain({ children }: Props) {
   return (
     <>
       <ToolbarModule />
