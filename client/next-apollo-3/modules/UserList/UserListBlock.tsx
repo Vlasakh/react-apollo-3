@@ -4,8 +4,11 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 // import { styled } from '@mui/material/styles';
 import { UserList } from './UserList';
+import { User } from './types';
 
-export function UserListBlock({ users, loading, onInitDb, setEditUser, onRowClick }) {
+type Props = { users: User[] };
+
+export function UserListBlock({ users, loading, onInitDb, setEditUser, onRowClick }: Props) {
   const [limit, setLimit] = useState(3);
 
   return (

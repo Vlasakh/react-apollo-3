@@ -17,7 +17,9 @@ const FIELDS_ORDER: UserFields[] = [
   UserFields.company,
 ];
 
-export function User({ id }) {
+type Props = { id: string };
+
+export function User({ id }: Props) {
   const router = useRouter();
   const appRoutes = useRouteService();
 

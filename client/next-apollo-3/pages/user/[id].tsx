@@ -6,7 +6,7 @@ const UserPage: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  return <User id={id} />;
+  return <User id={id as string} />;
 };
 
 export default UserPage;
