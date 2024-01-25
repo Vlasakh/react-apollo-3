@@ -8,10 +8,9 @@ const schema = buildSchema(`
     email: String
     address: String
     company: String
-    posts: [Post]
   }
   type Post {
-    userId: ID
+    user: User
     id: ID
     title: String
     body: String 

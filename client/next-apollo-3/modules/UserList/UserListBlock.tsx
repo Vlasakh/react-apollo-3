@@ -2,9 +2,8 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-// import { styled } from '@mui/material/styles';
+import { User } from '../../src/__generated__/graphql';
 import { UserList } from './UserList';
-import { User } from './types';
 
 type Props = { users: User[] };
 

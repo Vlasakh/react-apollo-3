@@ -1,77 +1,30 @@
 import axios from 'axios';
-import { setUsersTable, usersTable } from '../DB';
+import { setPostsTable, setUsersTable } from '../DB';
+import { remapPostsFromAPI } from '../models/Posts/helpers';
+import { UserResolvers } from '../models/Users/Resolvers';
+import { getAllUsers, remapUsersFromAPI } from '../models/Users/helpers';
 import { exampleLog } from '../models/cmd';
 
-const createUser = ({ id, ...input }) => ({ id: id || +new Date(), ...input });
-const remapUsersFromAPI = ({ id, firstName, lastName, maidenName: username, email, address, company }) => ({
-  id,
-  name: firstName + ' ' + lastName,
-  username,
-  email,
-  address: `${address.city}, ${address.street}`,
-  company: company.name,
-});
-
 export const root = {
+  ...new UserResolvers().getResolvers(),
   initDb: async ({ limit = 5 }) => {
     try {
       let users = axios(`https://dummyjson.com/users?limit=${limit}`);
-      users = await users;
+      let posts = axios(`https://dummyjson.com/posts?limit=${limit * 2}`);
 
-      users = users.data.users.map(remapUsersFromAPI);
+      users = await users;
+      users = new Map(users.data.users.map(remapUsersFromAPI));
       setUsersTable(users);
 
-      return users;
+      posts = await posts;
+      posts = new Map(remapPostsFromAPI(posts.data.posts));
+      setPostsTable(posts);
+
+      return getAllUsers(users);
     } catch (e) {
       console.error('❗e', e.message);
     }
   },
-  getSuggestionUsers: async () => {
-    try {
-      let users = axios(`https://dummyjson.com/users?skip=50&limit=10`);
-
-      users = await users;
-      users = users.data.users.map(remapUsersFromAPI);
-
-      return users;
-    } catch (e) {
-      console.error('❗e', e.message);
-    }
-  },
-  getAllUsers: () => {
-    return usersTable;
-  },
-  createUser: ({ input }) => {
-    let user = createUser(input);
-    usersTable.push(user);
-    return user;
-  },
-  updateUser: ({ input }) => {
-    const idx = usersTable.findIndex(({ id }) => id === input.id);
-
-    if (idx !== -1) {
-      const users = [...usersTable];
-      users[idx] = input;
-      setUsersTable(users);
-      return users[idx];
-    } else {
-      throw new Error("Didn't find then user");
-    }
-  },
-
-  getStaticUsers: async ({ skip }) => {
-    try {
-      let users = axios(`https://dummyjson.com/users?limit=10${skip ? `&skip=` + skip : ''}`);
-
-      users = await users;
-      users = users.data.users.map(remapUsersFromAPI);
-
-      return users;
-    } catch (e) {
-      console.error('❗e', e.message);
-    }
-  },
-
   runCmd: () => {
     const resp = exampleLog();
 

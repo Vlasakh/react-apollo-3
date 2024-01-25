@@ -45,8 +45,9 @@ export function UserList({ users = [], onRowClick = noop, controls = [] }) {
                 <TableCell>{company}</TableCell>
                 <TableCell>
                   <BoxContorls>
-                    {controls.map(({ title, onClick }) => (
+                    {controls.map(({ title, onClick }, idx) => (
                       <SquareButton
+                        key={idx}
                         variant={'outlined'}
                         onClick={(e) => {
                           e.stopPropagation();

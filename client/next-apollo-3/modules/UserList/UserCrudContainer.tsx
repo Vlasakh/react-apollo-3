@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { useRouteService } from '../../common/services/RouteService';
@@ -8,9 +8,10 @@ import { AddUser } from './AddUser';
 import { UserListBlock } from './UserListBlock';
 
 export function UserCrudContainer() {
-  const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
   const usersQuery = useQuery(GET_ALL_USERS);
+  const users = usersQuery?.data?.values || [];
+
   const [initDb] = useMutation(INIT_DB, {
     onCompleted: () => usersQuery.refetch(),
   });
@@ -27,9 +28,10 @@ export function UserCrudContainer() {
       variables: { limit: +limit },
     });
 
-  useEffect(() => {
-    usersQuery.data && setUsers(usersQuery.data.getAllUsers);
-  }, [usersQuery.data]);
+  console.log('❗usersQuery', usersQuery.data);
+  // useEffect(() => {
+  //   usersQuery.data && setUsers(usersQuery.data.getAllUsers);
+  // }, [usersQuery.data]);
 
   return (
     <>

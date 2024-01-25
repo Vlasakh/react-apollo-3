@@ -6,12 +6,13 @@ import merge from 'deepmerge';
 
 const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 const isSSR = typeof window === 'undefined';
-const PORT = process.env.SERVER_PORT;
+const PORT = process.env.NEXT_PUBLIC_SERVER_PORT;
 
 let apolloClient;
 
 function createIsomorphLink() {
   const { HttpLink } = require('@apollo/client/link/http');
+
   return new HttpLink({
     uri: `http://localhost:${PORT}/graphql`,
     credentials: 'same-origin',
@@ -19,20 +20,19 @@ function createIsomorphLink() {
 }
 
 function createApolloClient() {
-  const defaultOptions =
-    typeof window === 'undefined'
-      ? {
-          // query: {
-          //   fetchPolicy: 'no-cache',
-          //   errorPolicy: 'all',
-          // },
-        }
-      : {
-          query: {
-            fetchPolicy: 'cache-and-network',
-            errorPolicy: 'all',
-          },
-        };
+  const defaultOptions = isSSR
+    ? {
+        // query: {
+        //   fetchPolicy: 'no-cache',
+        //   errorPolicy: 'all',
+        // },
+      }
+    : {
+        query: {
+          fetchPolicy: 'cache-and-network',
+          errorPolicy: 'all',
+        },
+      };
 
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',

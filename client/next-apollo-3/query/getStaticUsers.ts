@@ -6,7 +6,7 @@ export const defaultVariables = { skip: 10 };
 export const GET_STATIC_USERS = gql`
   ${USER_FRAGMENT}
 
-  query Users($skip: Int) {
+  query GetStaticUsers($skip: Int) {
     values: getStaticUsers(skip: $skip) {
       ...userFragment
     }

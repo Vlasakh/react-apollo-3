@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 
 // Middleware to parse JSON in the request body
 
-export const PORT = process.env.SERVER_PORT;
+export const PORT = process.env.NEXT_PUBLIC_SERVER_PORT;
 
 const app = express();
 

@@ -5,6 +5,7 @@ import { UserList } from './UserList';
 export function StaticUsersContainer() {
   // const [users, setUsers] = useState([]);
   const usersQuery = useQuery(GET_STATIC_USERS);
+  console.log('❗usersQuery', usersQuery);
 
   return (
     <>
